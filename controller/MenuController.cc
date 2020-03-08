@@ -5,7 +5,6 @@
 
 void MenuController::registerUser(string name, string email, string password)
 {
-  //TODO: Register a user in a file
   User user(name, email, password);
 
   user.save();
@@ -13,7 +12,11 @@ void MenuController::registerUser(string name, string email, string password)
 
 void MenuController::login(string email, string password)
 {
-  //TODO: Search for a user
+
   User user = User::findOne(email, password);
-  cout << user.get_name() << endl;
+
+  cout << user.get_email() << endl;
+  cout << user.get_id() << endl;
+
+  /* return user; */ 
 }

@@ -22,6 +22,16 @@ User::User(string n, string e, string p)
   password = p;
 };
 
+void User::set_id(int i)
+{
+  id = i;
+}
+
+int User::get_id()
+{
+  return id;
+}
+
 string User::get_email()
 {
   return email;
@@ -37,31 +47,29 @@ string User::get_password()
   return password;
 }
 
+bool User::isEmpty()
+{
+  return email.empty();
+}
+
 // it will "load" the json file into a string
 // to be later parsed to a json object
-string User::load()
+json User::load()
 {
   fstream jsonFile; 
   jsonFile.open("users.json", ios::in);
+  json j;
 
-  string row, jsonString;
-  while(getline(jsonFile, row))
-  {
-    jsonString.append(row);
-  }
+  jsonFile >> j;
 
-  jsonFile.close();
-
-  return jsonString;
+  return j;
 }
 
 void User::save()
 {
-  string jsonString = User::load();
-  json users;
+  json users = User::load();
   json user;
   
-  users = json::parse(jsonString);  
   vector<json> usersArr = users["users"]; 
   
   // creating a json object with the information passed
@@ -89,9 +97,7 @@ void User::save()
 // it will be used to log in
 User User::findOne(string email, string password)
 {
-  cout << "opa" << endl;
-  string jsonString = load();   
-  json users = json::parse(jsonString);
+  json users = load();
   vector<json> usersArr = users["users"];
   json user;
   
@@ -107,7 +113,8 @@ User User::findOne(string email, string password)
   if (user["password"] == password)
   {
     User u(user["name"], user["email"], user["password"]);
-    cout << "Found a user" << endl;
+    u.set_id(user["id"]);
+
     return u;
   }
 
