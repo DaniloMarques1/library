@@ -6,11 +6,14 @@ class User
   std::string name, password, email;
   public:
     User(std::string name,  std::string email,std::string password);
+    User();
 
     std::string get_name();
     std::string get_email();
     std::string get_password();
 
-    std::string load();
+    static std::string load();
     void save();
+    static User findOne(std::string email, std::string password);
+    static User findById(int id);
 };

@@ -8,6 +8,13 @@
 using namespace std;
 using namespace nlohmann;
 
+User::User()
+{
+  name = "";
+  email = "";
+  password = "";
+}
+
 User::User(string n, string e, string p)
 {
   name = n;
@@ -58,6 +65,8 @@ void User::save()
   vector<json> usersArr = users["users"]; 
   
   // creating a json object with the information passed
+  int id = usersArr.size() + 1;
+  user["id"] = id;
   user["name"] = get_name();
   user["email"] = get_email();
   user["password"] = get_password();
@@ -76,3 +85,37 @@ void User::save()
   // dumping(string) the updated users json inside the file
   file << users.dump();
 } 
+
+// it will be used to log in
+User User::findOne(string email, string password)
+{
+  cout << "opa" << endl;
+  string jsonString = load();   
+  json users = json::parse(jsonString);
+  vector<json> usersArr = users["users"];
+  json user;
+  
+  for (auto obj: usersArr)
+  {
+    if (obj["email"] == email)
+    {
+      user = obj; 
+      break;
+    }
+  }
+  
+  if (user["password"] == password)
+  {
+    User u(user["name"], user["email"], user["password"]);
+    cout << "Found a user" << endl;
+    return u;
+  }
+
+  User u;
+  return u;
+}
+
+/* User User::findById(int id) */
+/* { */
+/*   //TODO: IMPLEMENT */
+/* }; */

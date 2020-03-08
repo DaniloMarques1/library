@@ -14,4 +14,6 @@ void MenuController::registerUser(string name, string email, string password)
 void MenuController::login(string email, string password)
 {
   //TODO: Search for a user
+  User user = User::findOne(email, password);
+  cout << user.get_name() << endl;
 }

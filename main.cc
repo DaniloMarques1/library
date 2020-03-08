@@ -2,7 +2,7 @@
 #include "model/User.h"
 #include "model/Book.h"
 #include "view/MenuView.h"
-#include "controller//MenuController.h"
+#include "controller/MenuController.h"
 
 using namespace std;
 
@@ -30,14 +30,27 @@ int main()
       cout << "Choose a good password:  ";
       // gets the line until hits non numerical character(space, end of line...)
       cin >> password;
-      // since the laste cin left a end of a line in the input buffer, we need to ignore it
+      // since the last cin left a end of a line in the input buffer, we need to ignore it
       cin.ignore();
 
       MenuController::registerUser(name, email, password);
       break;
     }
     case 2:
+    {
+      string email, password;
+
+      cout << "Type your email: ";
+      cin >> email;
+      cin.ignore();
+
+      cout << "Type your password: ";
+      cin >> password;
+      cin.ignore();
+
+      MenuController::login(email, password);
       break;
+    }
     default:
       break;
 
@@ -53,7 +66,7 @@ int getInputMenu()
 
   cout << "Your choice: ";
   cin >> choice; 
-  // since the laste cin left a end of a line in the input buffer, we need to ignore it
+  // since the last cin left a end of a line in the input buffer, we need to ignore it
   cin.ignore();
 
   return choice;
