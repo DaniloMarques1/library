@@ -1,3 +1,6 @@
+#ifndef MENUVIEW
+#define MENUVIEW
+
 #include <string>
 
 using namespace std;
@@ -10,3 +13,4 @@ class MenuView
     static void loggedMenu();
 };
 
+#endif // MENUVIEW

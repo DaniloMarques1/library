@@ -1,4 +1,6 @@
-// header guard will come soon
+#ifndef USER
+#define USER
+
 #include <string>
 #include "../json.hpp"
 
@@ -25,3 +27,5 @@ class User
     static User findById(int id);
     bool isEmpty();
 };
+
+#endif // ending USER

@@ -1,3 +1,6 @@
+#ifndef BOOK
+#define BOOK
+
 #include <string>
 
 using namespace std;
@@ -11,3 +14,5 @@ class Book
     string get_title();
     string get_category();
 };
+
+#endif // BOOK

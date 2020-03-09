@@ -2,6 +2,7 @@
 #include "model/Book.h"
 #include "view/MenuView.h"
 #include "controller/MenuController.h"
+#include "model/User.h"
 
 using namespace std;
 
@@ -53,10 +54,8 @@ int main()
     }
     default:
       break;
-
   }
   
-  cout << user.get_name() << endl;
   return 0;
 }
 
@@ -67,7 +66,7 @@ int getInputMenu()
 
   cout << "Your choice: ";
   cin >> choice; 
-  // since the last cin left a end of a line in the input buffer, we need to ignore it
+  // since the last cin left an end of a line in the input buffer, we need to ignore it
   cin.ignore();
 
   return choice;

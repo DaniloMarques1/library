@@ -1,3 +1,6 @@
+#ifndef MENUCONTROLLER
+#define MENUCONTROLLER
+
 #include <string>
 #include "../model/User.h"
 
@@ -10,3 +13,5 @@ class MenuController
     static void registerUser(string name, string email, string password);
     static User login(string email, string password);
 };
+
+#endif // MENUCONTROLLER
