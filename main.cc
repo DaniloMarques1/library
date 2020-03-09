@@ -1,5 +1,4 @@
 #include <iostream>
-#include "model/User.h"
 #include "model/Book.h"
 #include "view/MenuView.h"
 #include "controller/MenuController.h"
@@ -9,6 +8,7 @@ using namespace std;
 int getInputMenu();
 int main()
 { 
+  User user;
   int choice; 
   choice = getInputMenu();
 
@@ -48,7 +48,7 @@ int main()
       cin >> password;
       cin.ignore();
 
-      MenuController::login(email, password);
+      user = MenuController::login(email, password);
       break;
     }
     default:
@@ -56,6 +56,7 @@ int main()
 
   }
   
+  cout << user.get_name() << endl;
   return 0;
 }
 

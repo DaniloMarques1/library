@@ -12,7 +12,7 @@ class User
     User(std::string name,  std::string email,std::string password);
     User();
 
-    void set_id(int id);
+    void set_id(int i);
     int get_id();
 
     std::string get_name();
