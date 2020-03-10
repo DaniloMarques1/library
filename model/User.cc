@@ -32,6 +32,16 @@ int User::get_id()
   return id;
 }
 
+void User::set_books(vector<json> b)
+{
+  books = b;
+}
+
+vector<json> User::get_books()
+{
+  return books;
+}
+
 string User::get_email()
 {
   return email;
@@ -105,18 +115,18 @@ User User::findOne(string email, string password)
   {
     if (obj["email"] == email)
     {
-      // also prints with quotes
-      cout << obj["email"] << endl;
-
       user = obj; 
+
       break;
     }
   }
   
+  // user is an json object
   if (user["password"] == password)
   {
     User u(user["name"], user["email"], user["password"]);
     u.set_id(user["id"]);
+    u.set_books(user["books"]);
 
     return u;
   }

@@ -4,7 +4,11 @@
 #include "controller/MenuController.h"
 #include "model/User.h"
 
+// temporary
+#include "json.hpp"
+
 using namespace std;
+using namespace nlohmann;
 
 int getInputMenu();
 int getLoggedInput();
@@ -52,6 +56,9 @@ int main()
       cin.ignore();
 
       user = MenuController::login(email, password);
+      json book = user.get_books()[0];
+       
+      cout << book["title"] << endl;
       break;
     }
     default:
@@ -84,7 +91,7 @@ int main()
       }
       else if(choice == 2)
       {
-        MenuController::listBook(user.get_id());
+        MenuController::listBook(user.get_books());
       }
     }
   }

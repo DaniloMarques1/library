@@ -67,30 +67,40 @@ void Book::save(int id)
   file << users.dump();
 }
 
-void Book::list(int id)
+void Book::list(vector<json> books)
 {
-  json users = load();   
-  vector<json> usersArr = users["users"];
-
-  for (int i = 0; i < usersArr.size(); i++)
+  for (auto book: books)
   {
-    if (usersArr[i]["id"] == id)
-    {
-      // getting the books array of the user
-      vector<json> books = usersArr[i]["books"];
-      int size = books.size();
-      cout << "You have " << size << " book(s)" << endl;
-      for (auto bookJson: books)
-      {
-        cout << "============================" << endl;
-        string title = bookJson["title"]; 
-        string category = bookJson["category"]; 
+    cout << "============================" << endl;
+    string title = book["title"];
+    string category = book["category"];
 
-        cout << "Book title: " << title << endl;
-        cout << "Category of the book: " << category << endl;
-      }
-
-      break;
-    }
+    cout << "Title of the book: " << title << endl;
+    cout << "Category of the book: " << category << endl;
   }
+
+/*   json users = load(); */   
+/*   vector<json> usersArr = users["users"]; */
+
+/*   for (int i = 0; i < usersArr.size(); i++) */
+/*   { */
+/*     if (usersArr[i]["id"] == id) */
+/*     { */
+/*       // getting the books array of the user */
+/*       vector<json> books = usersArr[i]["books"]; */
+/*       int size = books.size(); */
+/*       cout << "You have " << size << " book(s)" << endl; */
+/*       for (auto bookJson: books) */
+/*       { */
+/*         cout << "============================" << endl; */
+/*         string title = bookJson["title"]; */ 
+/*         string category = bookJson["category"]; */ 
+
+/*         cout << "Book title: " << title << endl; */
+/*         cout << "Category of the book: " << category << endl; */
+/*       } */
+
+/*       break; */
+/*     } */
+/*   } */
 }

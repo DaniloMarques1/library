@@ -2,6 +2,7 @@
 #define BOOK
 
 #include <string>
+#include <vector>
 #include "../json.hpp"
 
 using namespace std;
@@ -20,7 +21,7 @@ class Book
     
     // id of the user
     void save(int id);
-    static void list(int id);
+    static void list(vector<json> books);
 };
 
 #endif // BOOK

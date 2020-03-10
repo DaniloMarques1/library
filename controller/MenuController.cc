@@ -1,5 +1,5 @@
-#include <iostream>
 #include <string>
+#include <vector>
 #include "../model/User.h"
 #include "../model/Book.h"
 #include "MenuController.h"
@@ -25,7 +25,7 @@ void MenuController::addBook(int id, string title, string category)
   book.save(id);
 }
 
-void MenuController::listBook(int id)
+void MenuController::listBook(vector<json> books)
 {
-  Book::list(id);
+  Book::list(books);
 }
