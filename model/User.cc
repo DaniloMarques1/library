@@ -105,6 +105,9 @@ User User::findOne(string email, string password)
   {
     if (obj["email"] == email)
     {
+      // also prints with quotes
+      cout << obj["email"] << endl;
+
       user = obj; 
       break;
     }

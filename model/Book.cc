@@ -37,10 +37,6 @@ json Book::load()
 
 void Book::save(int id)
 {
-
-  cout << id << endl;
-  cout << get_title() << endl;
-
   json user;
   json users = load();
   vector<json> usersArr = users["users"];
@@ -82,15 +78,19 @@ void Book::list(int id)
     {
       // getting the books array of the user
       vector<json> books = usersArr[i]["books"];
-      cout << "You have " << books.size() << " books" << endl;
+      int size = books.size();
+      cout << "You have " << size << " book(s)" << endl;
       for (auto bookJson: books)
       {
-        //TODO: printing with quotes
-        cout << "Book title: " <<  bookJson["title"] << endl;
-        cout << "Category of the book: " << bookJson["category"] << endl;
+        cout << "============================" << endl;
+        string title = bookJson["title"]; 
+        string category = bookJson["category"]; 
+
+        cout << "Book title: " << title << endl;
+        cout << "Category of the book: " << category << endl;
       }
+
       break;
     }
   }
-
 }

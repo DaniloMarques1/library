@@ -86,7 +86,6 @@ int main()
       {
         MenuController::listBook(user.get_id());
       }
-
     }
   }
 
