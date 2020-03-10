@@ -16,9 +16,11 @@ class Book
     string get_title();
     string get_category();
 
-    json load();
+    static json load();
+    
     // id of the user
     void save(int id);
+    static void list(int id);
 };
 
 #endif // BOOK

@@ -14,7 +14,7 @@ class MenuController
     static User login(string email, string password);
 
     static void addBook(int id, string title, string category);
-    static void listBook();
+    static void listBook(int id);
     static void deleteBook(string title);
 };
 

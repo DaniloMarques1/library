@@ -82,6 +82,10 @@ int main()
 
         MenuController::addBook(user.get_id(), title, category);
       }
+      else if(choice == 2)
+      {
+        MenuController::listBook(user.get_id());
+      }
 
     }
   }

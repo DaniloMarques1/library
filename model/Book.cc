@@ -70,3 +70,27 @@ void Book::save(int id)
   // writing back to the file
   file << users.dump();
 }
+
+void Book::list(int id)
+{
+  json users = load();   
+  vector<json> usersArr = users["users"];
+
+  for (int i = 0; i < usersArr.size(); i++)
+  {
+    if (usersArr[i]["id"] == id)
+    {
+      // getting the books array of the user
+      vector<json> books = usersArr[i]["books"];
+      cout << "You have " << books.size() << " books" << endl;
+      for (auto bookJson: books)
+      {
+        //TODO: printing with quotes
+        cout << "Book title: " <<  bookJson["title"] << endl;
+        cout << "Category of the book: " << bookJson["category"] << endl;
+      }
+      break;
+    }
+  }
+
+}

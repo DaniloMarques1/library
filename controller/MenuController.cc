@@ -24,3 +24,8 @@ void MenuController::addBook(int id, string title, string category)
 
   book.save(id);
 }
+
+void MenuController::listBook(int id)
+{
+  Book::list(id);
+}
