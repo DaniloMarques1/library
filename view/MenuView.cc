@@ -26,6 +26,7 @@ void MenuView::loggedMenu()
   cout << "1. Add a new book" << endl;
   cout << "2. List your books" << endl;
   cout << "3. Delete a book" << endl;
+  cout << "4. Exit" << endl;
   
   MenuView::drawLine();
 }

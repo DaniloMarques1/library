@@ -38,5 +38,3 @@ Example how the data will be stored in the file:
 ```
 
 ## TODO
-
-1. Learn about head guard

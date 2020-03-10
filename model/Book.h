@@ -2,8 +2,10 @@
 #define BOOK
 
 #include <string>
+#include "../json.hpp"
 
 using namespace std;
+using namespace nlohmann;
 
 class Book
 {
@@ -13,6 +15,10 @@ class Book
 
     string get_title();
     string get_category();
+
+    json load();
+    // id of the user
+    void save(int id);
 };
 
 #endif // BOOK

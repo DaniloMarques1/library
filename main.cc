@@ -7,6 +7,8 @@
 using namespace std;
 
 int getInputMenu();
+int getLoggedInput();
+
 int main()
 { 
   User user;
@@ -56,6 +58,34 @@ int main()
       break;
   }
   
+  if (user.isEmpty())
+  {
+    cout << "WRONG PASSWORD" << endl;
+  }
+  else
+  {
+    while(true)
+    {
+      choice = getLoggedInput();
+      if (choice == 4)
+      {
+        break;
+      }
+      if(choice == 1)
+      {
+        string title, category;
+        cout << "Title of the book: ";
+        getline(cin, title);
+
+        cout << "Category of the book: ";
+        getline(cin, category);
+
+        MenuController::addBook(user.get_id(), title, category);
+      }
+
+    }
+  }
+
   return 0;
 }
 
@@ -67,6 +97,17 @@ int getInputMenu()
   cout << "Your choice: ";
   cin >> choice; 
   // since the last cin left an end of a line in the input buffer, we need to ignore it
+  cin.ignore();
+
+  return choice;
+}
+
+int getLoggedInput()
+{
+  int choice;
+  MenuView::loggedMenu();
+  cout << "Your choice: ";
+  cin >> choice;
   cin.ignore();
 
   return choice;
